@@ -1,5 +1,5 @@
 import binascii
-#GhostCaller an Android CallerID spoofer developed by Deccatron
+#NoCaller an Android CallerID spoofer developed by Deccatron, If you are confused why sometimes, the term GhostCaller is used its because i changed the corny ass name to no caller...
 
 def construct_pdu(sender, recipient, message):
     try:
