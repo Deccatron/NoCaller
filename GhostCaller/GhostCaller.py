@@ -3,15 +3,12 @@ import binascii
 
 def construct_pdu(sender, recipient, message):
     try:
-        # Convert sender, recipient, and message to hexadecimal representation
         sender_hex = binascii.hexlify(sender.encode()).decode()
         recipient_hex = binascii.hexlify(recipient.encode()).decode()
         message_hex = binascii.hexlify(message.encode()).decode()
 
-        # Calculate PDU length
         pdu_length = len(message_hex) // 2 + 13  # Length of message + 7 bytes for SMS-SUBMIT + 6 bytes for sender + 1 byte for message length
 
-        # Construct PDU
         pdu = (
             f'00'  # SMSC address length (0, which means the SMSC stored in the phone should be used)
             f'11'  # PDU Type (11 for SMS-SUBMIT)
@@ -33,7 +30,6 @@ def construct_pdu(sender, recipient, message):
         print(f"Error constructing PDU: {e}")
         return None
 
-# Example usage
 def main():
     sender = "CustomSender"
     recipient = "+1234567890"  # Phone number of the recipient
